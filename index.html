@@ -1,14 +1,71 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/select.css">
-    <link rel="stylesheet" href="css/opensans.css">
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/select.css" />
+    <link rel="stylesheet" href="fonts/opensans.css" />
+    <link rel="stylesheet" href="fonts/roboto.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+    />
     <title>Customize</title>
+    <style>
+      [class*="ground-pane"] {
+        filter: grayscale(1);
+      }
+    </style>
+    <script
+      src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      // Функция ymaps.ready() будет вызвана, когда
+      // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+      ymaps.ready(init);
+      function init() {
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+          // Координаты центра карты.
+          // Порядок по умолчанию: «широта, долгота».
+          //  Чтобы не определять координаты центра карты вручную,
+          // воспользуйтесь инструментом Определение координат.
+          center: [48.9, 2.36],
+          // Уровень масштабирования. Допустимые значения:
+          // от 0 (весь мир) до 19.
+          zoom: 12,
+        });
+        // Создание геообъекта с типом точка (метка).
+        var myPlacemark = new ymaps.Placemark(
+          [48.87, 2.35],
+          {},
+          {
+            iconLayout: "default#image",
+            iconImageHref: "img/myPlacemark.svg",
+            iconImageSize: [30, 42],
+            iconImageOffset: [-3, -42],
+          }
+        );
+        // Размещение геообъекта на карте.
+        myMap.geoObjects.add(myPlacemark);
+        myMap.controls.remove("zoomControl");
+        myMap.controls.remove("rulerControl");
+        myMap.controls.remove("geolocationControl");
+        myMap.controls.remove("searchControl");
+        myMap.controls.remove("trafficControl");
+        myMap.controls.remove("typeSelector");
+        myMap.controls.remove("fullscreenControl");
+        myMap.controls.remove("routeButtonControl");
+        myMap.controls.remove("rulerControl");
+        myMap.controls.remove("rulerControl");
+      }
+    </script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <main class="main">
@@ -18,81 +75,319 @@
             <form class="checkbox__form">
               <h2 class="checkbox__title">Категории:</h2>
               <label for="Dino" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Dino" id="Dino">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Dino"
+                  id="Dino"
+                />
                 Динозавры
                 <span></span>
               </label>
               <label for="Bear" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Bear" id="Bear">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Bear"
+                  id="Bear"
+                />
                 Медведи
                 <span></span>
               </label>
               <label for="Roe" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Roe" id="Roe">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Roe"
+                  id="Roe"
+                />
                 Косули
                 <span></span>
               </label>
               <label for="Fox" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Fox" id="Fox">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Fox"
+                  id="Fox"
+                />
                 Лисы
                 <span></span>
               </label>
               <label for="Wolf" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Wolf" id="Wolf">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Wolf"
+                  id="Wolf"
+                />
                 Волки
                 <span></span>
               </label>
               <label for="Deer" class="checkbox__label">
-                <input type="checkbox" name="animals" class="checkbox__marker" value="Deer" id="Deer">
+                <input
+                  type="checkbox"
+                  name="animals"
+                  class="checkbox__marker"
+                  value="Deer"
+                  id="Deer"
+                />
                 Олени и лоси
                 <span></span>
               </label>
             </form>
           </section>
-  
+
           <section class="select">
             <form>
               <div class="__select" data-state="">
                 <div class="__select__title"></div>
                 <div class="__select__content">
-                  <input id="singleSelect0" class="__select__input" type="radio" name="singleSelect" checked>
-                  <label id="del" for="singleSelect0" tabindex="0" class="__select__label" data-value="Материалы"></label>
-                  <input id="singleSelect1" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect1" tabindex="0" class="__select__label" data-value="Древесина"></label>
-                  <input id="singleSelect2" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect2" tabindex="0" class="__select__label" data-value="Металл"></label>
-                  <input id="singleSelect3" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect3" tabindex="0" class="__select__label" data-value="Камень"></label>
-                  <input id="singleSelect4" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect4" tabindex="0" class="__select__label" data-value="Пластик"></label>
-                  <input id="singleSelect5" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect5" tabindex="0" class="__select__label" data-value="Композитный"></label>
-                  <input id="singleSelect6" class="__select__input" type="radio" name="singleSelect" />
-                  <label for="singleSelect6" tabindex="0" class="__select__label" data-value="Гипс"></label>
+                  <input
+                    id="singleSelect0"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                    checked
+                  />
+                  <label
+                    id="del"
+                    for="singleSelect0"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Материалы"
+                  ></label>
+                  <input
+                    id="singleSelect1"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect1"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Древесина"
+                  ></label>
+                  <input
+                    id="singleSelect2"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect2"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Металл"
+                  ></label>
+                  <input
+                    id="singleSelect3"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect3"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Камень"
+                  ></label>
+                  <input
+                    id="singleSelect4"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect4"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Пластик"
+                  ></label>
+                  <input
+                    id="singleSelect5"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect5"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Композитный"
+                  ></label>
+                  <input
+                    id="singleSelect6"
+                    class="__select__input"
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    for="singleSelect6"
+                    tabindex="0"
+                    class="__select__label"
+                    data-value="Гипс"
+                  ></label>
                 </div>
               </div>
-            </form>         
-            
+            </form>
+
             <script src="source/js/select.js"></script>
           </section>
-  
+
           <section class="map">
-  
+            <div id="map" style="width: 460px; height: 460px"></div>
           </section>
-  
+
           <section class="scroll">
-  
+            <div class="customScroll" data-simplebar>
+              Сложно сказать, почему многие известные личности представлены в
+              исключительно положительном свете. Лишь активно развивающиеся
+              страны третьего мира будут объективно рассмотрены соответствующими
+              инстанциями. Мы вынуждены отталкиваться от того, что
+              высокотехнологичная концепция общественного уклада представляет
+              собой интересный эксперимент проверки глубокомысленных
+              рассуждений. Имеется спорная точка зрения, гласящая примерно
+              следующее: непосредственные участники технического прогресса
+              освещают чрезвычайно интересные особенности картины в целом,
+              однако конкретные выводы, разумеется, обнародованы. Значимость
+              этих проблем настолько очевидна, что социально-экономическое
+              развитие, а также свежий взгляд на привычные вещи - безусловно
+              открывает новые горизонты для первоочередных требований. Сложно
+              сказать, почему многие известные личности представлены в
+              исключительно положительном свете. Лишь активно развивающиеся
+              страны третьего мира будут объективно рассмотрены соответствующими
+              инстанциями. Мы вынуждены отталкиваться от того, что
+              высокотехнологичная концепция общественного уклада представляет
+              собой интересный эксперимент проверки глубокомысленных
+              рассуждений. Имеется спорная точка зрения, гласящая примерно
+              следующее: непосредственные участники технического прогресса
+              освещают чрезвычайно интересные особенности картины в целом,
+              однако конкретные выводы, разумеется, обнародованы. Значимость
+              этих проблем настолько очевидна, что социально-экономическое
+              развитие, а также свежий взгляд на привычные вещи - безусловно
+              открывает новые горизонты для первоочередных требований. Сложно
+              сказать, почему многие известные личности представлены в
+              исключительно положительном свете. Лишь активно развивающиеся
+              страны третьего мира будут объективно рассмотрены соответствующими
+              инстанциями. Мы вынуждены отталкиваться от того, что
+              высокотехнологичная концепция общественного уклада представляет
+              собой интересный эксперимент проверки глубокомысленных
+              рассуждений. Имеется спорная точка зрения, гласящая примерно
+              следующее: непосредственные участники технического прогресса
+              освещают чрезвычайно интересные особенности картины в целом,
+              однако конкретные выводы, разумеется, обнародованы. Значимость
+              этих проблем настолько очевидна, что социально-экономическое
+              развитие, а также свежий взгляд на привычные вещи - безусловно
+              открывает новые горизонты для первоочередных требований.
+            </div>
           </section>
-  
+
           <section class="validation">
-  
+            <form action="" class="form">
+              <input
+                name="Имя"
+                type="text"
+                placeholder="Имя*"
+                data-validate-field="name"
+              />
+              <input
+                name="tel"
+                type="tel"
+                placeholder="Телефон*"
+                data-validate-field="tel"
+                data-validate-rules="phone"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="E-mail*"
+                data-validate-field="mail"
+              />
+              <button class="form__btn">Заказать</button>
+            </form>
+            <script src="source/js/just-validate.min.js"></script>
+            <script src="source/js/inputmask.min.js"></script>
+            <script>
+              var selector = document.querySelector("input[type='tel']");
+              var im = new Inputmask("+7 (999)-999-99-99");
+
+              im.mask(selector);
+
+              new JustValidate(".form", {
+                rules: {
+                  name: {
+                    required: true,
+                    minLength: 2,
+                    maxLength: 10,
+                  },
+                  tel: {
+                    required: true,
+                    function: (name, value) => {
+                      const phone = selector.inputmask.unmaskedvalue();
+                      return Number(phone) && phone.length === 10;
+                    },
+                  },
+                  mail: {
+                    required: true,
+                    email: true,
+                  },
+                },
+                messages: {
+                  name: {
+                    minLength:
+                      "Поле должно состоять минимум из :value символов",
+                    maxLength:
+                      "Поле должно состоять максимум из :value символов",
+                    required: "Вы не ввели имя",
+                  },
+                  tel: {
+                    required: "Вы не ввели телефон",
+                    function: "Номер в неверном формате",
+                  },
+                  mail: {
+                    required: "Вы не ввели e-mail",
+                    email: "Пожалуйста, введите валидный e-mail",
+                  },
+                },
+              });
+            </script>
           </section>
-  
+
           <sction class="tooltips">
-  
+            <div class="tooltip">
+              <div class="marker">
+                Следует отметить, что социально-экономическое развитие
+                способствует повышению качества переосмысления
+                внешнеэкономических политик.<span class="mark" tabindex="0">
+                  <svg
+                    class="marker-icon"
+                    width="16"
+                    height="16"
+                    viewbox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM8 3C7.33333 3 7 3.31919 7 3.95758C7 4.60026 7.33333 4.92159 8 4.92159C8.33333 4.92159 8.58233 4.83805 8.74699 4.67095C8.91566 4.49957 9 4.26178 9 3.95758C9 3.31919 8.66667 3 8 3ZM7.07831 13H8.91566V5.81491H7.07831V13Z"
+                      fill="#BCBCBC"
+                    />
+                  </svg>
+                </span>
+                <div class="popup">Глава 2, страница 176</div>
+              </div>
+            </div>
           </sction>
         </div>
-      </div>  
+      </div>
     </main>
   </body>
 </html>

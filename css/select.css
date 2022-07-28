@@ -1,11 +1,16 @@
 /* Select */
+.select {
+  height: 279px;
+  width: 176px;
+  margin-left: 58px;
+}
+
 .__select {
   position: relative;
   display: flex;
   width: 176px;
   height: 39px;
   margin: 0;
-  margin-left: 58px;
   z-index: 1;
 }
 .__select[data-state=active] .__select__title {
